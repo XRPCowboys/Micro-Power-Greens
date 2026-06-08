@@ -85,6 +85,25 @@
   .vcard h3{font-size:23px;margin-bottom:10px;}
   .vcard p{margin:0;color:var(--muted);line-height:1.6;font-size:15px;}
 
+  /* ---------- MENU ---------- */
+  .menu{padding:30px 0 90px;}
+  .mfeature{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .mcard{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease;}
+  .mcard:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(28,58,40,.13);}
+  .mph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--mist);}
+  .mph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .mcard:hover .mph img{transform:scale(1.04);}
+  .mprice{position:absolute;top:16px;right:16px;background:var(--lime);color:var(--forest);font:700 18px/1 var(--sans);padding:10px 16px;border-radius:100px;box-shadow:0 6px 18px rgba(28,58,40,.18);}
+  .mbody{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .mbody h3{font-size:28px;}
+  .mbody p{margin:0;color:var(--muted);line-height:1.6;font-size:15px;flex:1;}
+  .add-wide{align-self:flex-start;background:var(--forest);color:var(--paper);font-weight:600;font-size:15px;padding:13px 24px;border-radius:100px;cursor:pointer;transition:background .2s,transform .2s;}
+  .add-wide:hover{background:var(--leaf);transform:translateY(-2px);}
+  .varbar{margin-top:24px;padding:22px 28px;background:var(--paper2);border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .varbar-label{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);white-space:nowrap;}
+  .varbar .chips{display:flex;gap:10px;flex-wrap:wrap;}
+  .varbar .chips span{font-size:13px;font-weight:600;padding:9px 15px;border-radius:100px;background:#fff;border:1px solid var(--line);color:var(--forest);}
+
   /* ---------- VARIETIES ---------- */
   .varieties{padding:30px 0 90px;}
   .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
@@ -197,18 +216,18 @@
       <span class="wm">Micro Power Greens<em>Living Greens Co.</em></span>
     </a>
     <nav class="navlinks">
-      <a href="#varieties">Our Greens</a>
+      <a href="#menu">Menu</a>
       <a href="#grow">The Grow Lab</a>
       <a href="#recipes">Recipes</a>
-      <a href="#subscribe" class="btn btn-solid" style="padding:11px 22px;font-size:14px;">Order weekly</a>
+      <a href="#subscribe" class="btn btn-solid" style="padding:11px 22px;font-size:14px;">Order now</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <nav class="mobile-menu">
-    <a href="#varieties">Our Greens</a>
+    <a href="#menu">Menu</a>
     <a href="#grow">The Grow Lab</a>
     <a href="#recipes">Recipes</a>
-    <a href="#subscribe" class="btn btn-solid">Order weekly</a>
+    <a href="#subscribe" class="btn btn-solid">Order now</a>
   </nav>
 </header>
 
@@ -217,19 +236,19 @@
   <!-- HERO -->
   <section class="wrap hero" data-screen-label="Hero">
     <div class="hero-copy">
-      <div class="eyebrow reveal">Cut fresh · delivered local</div>
+      <div class="eyebrow reveal">Cut fresh · ready to eat</div>
       <h1 class="reveal">Big nutrition,<br><em>grown small.</em></h1>
-      <p class="sub reveal">Nutrient-dense microgreens raised by hand in our climate-controlled grow room — harvested the morning they reach your kitchen, never shipped from afar.</p>
+      <p class="sub reveal">Living salads and single-variety portions, hand-cut in our grow room the morning they reach you. Nutrient-dense greens, ready when you are.</p>
       <div class="actions reveal">
-        <a href="#varieties" class="btn btn-solid">Shop microgreens</a>
+        <a href="#menu" class="btn btn-solid">See the menu</a>
         <a href="#grow" class="btn btn-ghost"><span>See how we grow →</span></a>
       </div>
     </div>
     <div class="hero-figure reveal">
       <div class="panel">
-        <img src="puck-white.jpg" alt="A living tray of radish microgreens">
+        <img src="salad-bowl.jpg" alt="A fresh Power Greens salad bowl">
       </div>
-      <div class="tag"><b>Radish · Living tray</b><s>Harvested to order</s></div>
+      <div class="tag"><b>Power Greens Salad · $6</b><s>Cut &amp; tossed to order</s></div>
       <div class="badge">Picked<br>this<br>morning</div>
     </div>
   </section>
@@ -262,53 +281,48 @@
       <div class="vcard reveal">
         <div class="ic">📍</div>
         <h3>Truly local</h3>
-        <p>From our racks to your table in hours, not days. Every tray is grown, cut, and delivered within the community we live in.</p>
+        <p>From our racks to your table in hours, not days. Every salad is grown, cut, and delivered within the community we live in.</p>
       </div>
     </div>
   </section>
 
-  <!-- VARIETIES -->
-  <section class="wrap varieties" id="varieties">
+  <!-- MENU -->
+  <section class="wrap menu" id="menu" data-screen-label="Menu">
     <div class="sec-head">
       <div class="reveal">
-        <div class="eyebrow">This week's living trays</div>
-        <h2>Pick your greens</h2>
+        <div class="eyebrow">Fresh from the grow room</div>
+        <h2>The menu</h2>
       </div>
-      <a href="#subscribe" class="btn btn-ghost reveal"><span>See all varieties →</span></a>
+      <a href="#subscribe" class="btn btn-ghost reveal"><span>How ordering works →</span></a>
     </div>
-    <div class="pgrid">
-      <article class="pcard reveal">
-        <div class="ph"><span class="heat">Peppery</span><img src="puck-white.jpg" alt="Radish microgreens"></div>
-        <div class="body">
-          <h3>Radish</h3>
-          <p>Bold, spicy kick. The crowd favorite for tacos, eggs and grain bowls.</p>
-          <div class="row"><span class="price">$6 <s>/ 2oz tray</s></span><span class="add" role="button" aria-label="Add">+</span></div>
+    <div class="mfeature">
+      <article class="mcard reveal">
+        <div class="mph"><img src="salad-bowl.jpg" alt="Power Greens salad bowl"><span class="mprice">$6</span></div>
+        <div class="mbody">
+          <h3>The Power Greens Salad</h3>
+          <p>A full bowl of our living salad mix — radish, pea, beet and brassica microgreens tossed with crisp veg and a light dressing. Ready to eat, the moment it's cut.</p>
+          <span class="add-wide" role="button">Add salad · $6</span>
         </div>
       </article>
-      <article class="pcard reveal">
-        <div class="ph"><span class="heat">Sweet</span><img src="pots-basket.jpg" alt="Pea shoot microgreens"></div>
-        <div class="body">
-          <h3>Pea Shoots</h3>
-          <p>Crisp and fresh, like spring peas. Tendrils made for stir-fry and salads.</p>
-          <div class="row"><span class="price">$6 <s>/ 2oz tray</s></span><span class="add" role="button" aria-label="Add">+</span></div>
+      <article class="mcard reveal">
+        <div class="mph"><img src="portion-clamshell.jpg" alt="Single portion clamshell of microgreens"><span class="mprice">$5</span></div>
+        <div class="mbody">
+          <h3>Single Portions</h3>
+          <p>A fresh-cut clamshell of one variety, living roots and all. Pick your favorite green and add it to bowls, toast, eggs or anything that needs a lift.</p>
+          <span class="add-wide" role="button">Add portion · $5</span>
         </div>
       </article>
-      <article class="pcard reveal">
-        <div class="ph"><span class="heat">Earthy</span><img src="stems-purple.jpg" alt="Beet microgreens"></div>
-        <div class="body">
-          <h3>Ruby Beet</h3>
-          <p>Magenta stems, mellow earthy flavor. A showstopper garnish on any plate.</p>
-          <div class="row"><span class="price">$7 <s>/ 2oz tray</s></span><span class="add" role="button" aria-label="Add">+</span></div>
-        </div>
-      </article>
-      <article class="pcard reveal">
-        <div class="ph"><span class="heat">Balanced</span><img src="lab-chard.jpg" alt="Salad mix microgreens"></div>
-        <div class="body">
-          <h3>House Salad Mix</h3>
-          <p>A living rainbow of radish, beet and brassica — a whole salad in one cut.</p>
-          <div class="row"><span class="price">$8 <s>/ 3oz tray</s></span><span class="add" role="button" aria-label="Add">+</span></div>
-        </div>
-      </article>
+    </div>
+    <div class="varbar reveal">
+      <span class="varbar-label">Portion varieties</span>
+      <div class="chips">
+        <span>Radish · peppery</span>
+        <span>Pea shoots · sweet</span>
+        <span>Broccoli · mild</span>
+        <span>Ruby beet · earthy</span>
+        <span>Sunflower · nutty</span>
+        <span>Salad mix · balanced</span>
+      </div>
     </div>
   </section>
 
@@ -319,7 +333,7 @@
         <div class="eyebrow">Inside the grow room</div>
         <h2>Part garden, part lab — all by hand.</h2>
         <p>Each variety gets its own light spectrum, water schedule and harvest window. We test every batch under pink-and-violet grow lights tuned to push flavor and color to their peak.</p>
-        <p>No trucks, no warehouses, no plastic clamshells sitting for a week. Just trays, scissors, and greens at their absolute freshest.</p>
+        <p>No trucks, no warehouses, no week-old greens. Just trays, scissors, and greens cut the same day you get them.</p>
         <div class="facts">
           <div><b>7–21</b><s>days from seed to harvest</s></div>
           <div><b>0</b><s>pesticides, ever</s></div>
@@ -327,9 +341,9 @@
         </div>
       </div>
       <div class="collage reveal">
-        <figure class="tall"><img src="lab-pink-radish.jpg" alt="Microgreens under grow lights"></figure>
-        <figure><img src="harvest-cut.jpg" alt="Harvesting microgreens with scissors"></figure>
-        <figure><img src="hand-pick.jpg" alt="Inspecting a tray of microgreens"></figure>
+        <figure class="tall"><img src="lab-racks.jpg" alt="Racks of colorful microgreens under grow lights"></figure>
+        <figure><img src="lab-cutting.jpg" alt="Harvesting microgreens with scissors"></figure>
+        <figure><img src="grow-seedlings.jpg" alt="Young microgreen seedlings"></figure>
       </div>
     </div>
   </section>
@@ -345,21 +359,21 @@
     </div>
     <div class="rgrid">
       <a class="rcard reveal" href="#">
-        <img src="meal-salad.jpg" alt="Microgreen and pear salad">
+        <img src="meal-avotoast.jpg" alt="Avocado and microgreen toast">
         <div class="grad"></div>
         <div class="cap">
           <small>5 min · No cook</small>
-          <h3>Garden &amp; pear salad</h3>
-          <p>House salad mix, crisp pear, poppyseed dressing.</p>
+          <h3>Avocado &amp; sprout toast</h3>
+          <p>Smashed avo, grilled zucchini, a crown of microgreens.</p>
         </div>
       </a>
       <a class="rcard reveal" href="#">
-        <img src="meal-stirfry.jpg" alt="Chicken and broccoli stir fry with microgreens">
+        <img src="meal-toasts.jpg" alt="A board of microgreen tartines">
         <div class="grad"></div>
         <div class="cap">
-          <small>25 min · Weeknight</small>
-          <h3>Ginger stir-fry, finished raw</h3>
-          <p>Pea shoots tossed in off the heat for fresh crunch.</p>
+          <small>15 min · Shareable</small>
+          <h3>Microgreen tartines</h3>
+          <p>Six ways with pea, radish &amp; sunflower shoots.</p>
         </div>
       </a>
     </div>
@@ -371,8 +385,8 @@
       <div class="bg"><img src="field-green.jpg" alt="A tray of fresh microgreens"></div>
       <div class="c">
         <div class="eyebrow">Fresh greens, on repeat</div>
-        <h2>Living trays at your door, every week.</h2>
-        <p>Choose your varieties, set your schedule, and we'll cut a fresh box the morning of every delivery. Pause or swap anytime.</p>
+        <h2>Salads &amp; portions at your door, every week.</h2>
+        <p>Choose your salads or single portions, set your schedule, and we'll cut everything fresh the morning of each delivery. Pause or swap anytime.</p>
         <form class="sub-form" onsubmit="return false;">
           <input type="email" placeholder="Your email address" aria-label="Email address">
           <button class="btn btn-lime" type="submit">Start a weekly box</button>
@@ -395,7 +409,7 @@
       </div>
       <div class="fcol">
         <h4>Shop</h4>
-        <a href="#varieties">All varieties</a>
+        <a href="#menu">The menu</a>
         <a href="#subscribe">Weekly box</a>
         <a href="#">Gift cards</a>
         <a href="#">Wholesale &amp; chefs</a>
