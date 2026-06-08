@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro Power Greens — Living microgreens, grown local</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4ED; --paper2:#EFEDE3; --forest:#1C3A28; --forest2:#16301F;
+    --leaf:#4C7A3A; --lime:#9FD545; --mist:#E2EDD0; --ink:#1C3A28;
+    --muted:#5E6B5C; --line:rgba(28,58,40,.12);
+    --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-0.02em;margin:0;}
+  .eyebrow{font:700 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--leaf);display:inline-flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:15px;border-radius:100px;padding:15px 26px;transition:transform .2s ease,background .2s ease,opacity .2s;}
+  .btn-solid{background:var(--forest);color:var(--paper);}
+  .btn-solid:hover{transform:translateY(-2px);background:var(--forest2);}
+  .btn-lime{background:var(--lime);color:var(--forest);}
+  .btn-lime:hover{transform:translateY(-2px);filter:brightness(1.04);}
+  .btn-ghost{background:transparent;color:var(--forest);padding:15px 6px;}
+  .btn-ghost span{border-bottom:2px solid var(--lime);padding-bottom:3px;}
+  .btn-ghost:hover{opacity:.7;}
+
+  /* reveal — resting state is VISIBLE; .in only adds an entrance animation */
+  .js .reveal.in{animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.js .reveal.in{animation:none;}}
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(246,244,237,.82);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
+  header.scrolled{border-color:var(--line);box-shadow:0 4px 20px rgba(28,58,40,.05);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .mark{width:40px;height:40px;border-radius:50%;background:var(--lime);display:grid;place-items:center;flex:none;}
+  .mark::before{content:"";width:17px;height:17px;border-radius:0 50% 50% 50%;background:var(--forest);transform:rotate(45deg);}
+  .wm{font:600 18px/1 var(--serif);}
+  .wm em{font-style:normal;display:block;font:700 9px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;opacity:.5;margin-top:4px;}
+  .navlinks{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;}
+  .navlinks a:not(.btn):hover{color:var(--leaf);}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--forest);margin:5px 0;border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:70px 0 96px;}
+  .hero .eyebrow{margin-bottom:26px;}
+  .hero h1{font-size:clamp(42px,6vw,72px);line-height:.98;margin-bottom:24px;}
+  .hero h1 em{font-style:italic;color:var(--leaf);}
+  .hero .sub{font-size:18px;line-height:1.6;color:var(--muted);max-width:40ch;margin-bottom:36px;}
+  .hero .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+  .hero-figure{position:relative;}
+  .hero-figure .panel{position:relative;border-radius:26px;overflow:hidden;background:var(--mist);aspect-ratio:4/4.4;}
+  .hero-figure .panel img{width:100%;height:100%;object-fit:cover;}
+  .hero-figure .tag{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.94);backdrop-filter:blur(4px);padding:13px 18px;border-radius:14px;box-shadow:0 8px 24px rgba(28,58,40,.12);}
+  .hero-figure .tag b{font:600 15px/1 var(--serif);display:block;}
+  .hero-figure .tag s{text-decoration:none;font-size:12px;color:var(--muted);}
+  .hero-figure .badge{position:absolute;right:10px;top:30px;background:var(--forest);color:var(--paper);width:104px;height:104px;border-radius:50%;display:grid;place-items:center;text-align:center;font:600 13px/1.3 var(--serif);transform:rotate(8deg);box-shadow:0 12px 30px rgba(28,58,40,.22);}
+
+  /* marquee strip */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper2);overflow:hidden;}
+  .strip .track{display:flex;gap:48px;padding:16px 0;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content;}
+  .strip .track span{font:500 14px/1 var(--sans);letter-spacing:.04em;color:var(--leaf);display:inline-flex;align-items:center;gap:48px;}
+  .strip .track span::after{content:"✦";color:var(--lime);}
+  @keyframes scroll{to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){.strip .track{animation:none;}}
+
+  /* ---------- VALUES ---------- */
+  .values{padding:84px 0;}
+  .values .head{max-width:54ch;margin-bottom:54px;}
+  .values h2{font-size:clamp(30px,4vw,42px);line-height:1.05;margin:18px 0 0;}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .vcard{padding:30px;border-radius:20px;background:#fff;border:1px solid var(--line);}
+  .vcard .ic{width:46px;height:46px;border-radius:12px;background:var(--mist);display:grid;place-items:center;margin-bottom:22px;font-size:22px;}
+  .vcard h3{font-size:23px;margin-bottom:10px;}
+  .vcard p{margin:0;color:var(--muted);line-height:1.6;font-size:15px;}
+
+  /* ---------- MENU ---------- */
+  .menu{padding:30px 0 90px;}
+  .mfeature{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .mcard{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease;}
+  .mcard:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(28,58,40,.13);}
+  .mph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--mist);}
+  .mph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .mcard:hover .mph img{transform:scale(1.04);}
+  .mprice{position:absolute;top:16px;right:16px;background:var(--lime);color:var(--forest);font:700 18px/1 var(--sans);padding:10px 16px;border-radius:100px;box-shadow:0 6px 18px rgba(28,58,40,.18);}
+  .mbody{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .mbody h3{font-size:28px;}
+  .mbody p{margin:0;color:var(--muted);line-height:1.6;font-size:15px;flex:1;}
+  .add-wide{align-self:flex-start;background:var(--forest);color:var(--paper);font-weight:600;font-size:15px;padding:13px 24px;border-radius:100px;cursor:pointer;transition:background .2s,transform .2s;}
+  .add-wide:hover{background:var(--leaf);transform:translateY(-2px);}
+  .varbar{margin-top:24px;padding:22px 28px;background:var(--paper2);border:1px solid var(--line);border-radius:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .varbar-label{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);white-space:nowrap;}
+  .varbar .chips{display:flex;gap:10px;flex-wrap:wrap;}
+  .varbar .chips span{font-size:13px;font-weight:600;padding:9px 15px;border-radius:100px;background:#fff;border:1px solid var(--line);color:var(--forest);}
+
+  /* ---------- VARIETIES ---------- */
+  .varieties{padding:30px 0 90px;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(30px,4vw,44px);line-height:1.02;}
+  .sec-head .eyebrow{margin-bottom:16px;}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(28,58,40,.12);}
+  .pcard .ph{aspect-ratio:1/1;overflow:hidden;background:var(--mist);position:relative;}
+  .pcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .pcard:hover .ph img{transform:scale(1.05);}
+  .pcard .heat{position:absolute;top:12px;left:12px;background:rgba(246,244,237,.92);font:700 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);padding:7px 11px;border-radius:100px;}
+  .pcard .body{padding:20px;}
+  .pcard h3{font-size:22px;margin-bottom:6px;}
+  .pcard p{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.55;}
+  .pcard .row{display:flex;align-items:center;justify-content:space-between;}
+  .pcard .price{font:600 16px/1 var(--sans);white-space:nowrap;}
+  .pcard .price s{text-decoration:none;font-weight:500;color:var(--muted);font-size:13px;}
+  .pcard .add{width:38px;height:38px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center;font-size:20px;cursor:pointer;transition:background .2s,transform .2s;}
+  .pcard .add:hover{background:var(--leaf);transform:scale(1.08);}
+
+  /* ---------- GROW STORY ---------- */
+  .grow{background:var(--forest);color:var(--paper);padding:96px 0;}
+  .grow .eyebrow{color:var(--lime);}
+  .grow .eyebrow::before{background:var(--lime);}
+  .grow .inner{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;}
+  .grow h2{font-size:clamp(32px,4.4vw,50px);line-height:1.02;margin:18px 0 22px;color:var(--paper);}
+  .grow p{color:rgba(246,244,237,.78);line-height:1.7;font-size:17px;max-width:46ch;margin:0 0 22px;}
+  .grow .facts{display:flex;gap:38px;margin-top:34px;flex-wrap:wrap;}
+  .grow .facts div b{font:400 34px/1 var(--serif);color:var(--lime);display:block;}
+  .grow .facts div s{text-decoration:none;font-size:13px;color:rgba(246,244,237,.66);display:block;margin-top:6px;max-width:16ch;}
+  .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:14px;}
+  .collage figure{margin:0;border-radius:18px;overflow:hidden;}
+  .collage img{width:100%;height:100%;object-fit:cover;}
+  .collage .tall{grid-row:span 2;}
+
+  /* ---------- RECIPES ---------- */
+  .recipes{padding:96px 0;}
+  .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:42px;}
+  .rcard{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/11;}
+  .rcard img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+  .rcard:hover img{transform:scale(1.04);}
+  .rcard .grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,48,31,.82),rgba(22,48,31,.05) 55%);}
+  .rcard .cap{position:absolute;left:26px;right:26px;bottom:24px;color:var(--paper);}
+  .rcard .cap small{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--lime);}
+  .rcard .cap h3{color:var(--paper);font-size:27px;margin:10px 0 6px;}
+  .rcard .cap p{margin:0;color:rgba(246,244,237,.85);font-size:14px;}
+
+  /* ---------- SUBSCRIBE CTA ---------- */
+  .subscribe{padding:0 0 96px;}
+  .sub-band{position:relative;border-radius:30px;overflow:hidden;padding:84px 56px;color:var(--paper);}
+  .sub-band .bg{position:absolute;inset:0;}
+  .sub-band .bg img{width:100%;height:100%;object-fit:cover;}
+  .sub-band .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(22,48,31,.92),rgba(22,48,31,.55));}
+  .sub-band .c{position:relative;max-width:560px;}
+  .sub-band .eyebrow{color:var(--lime);}
+  .sub-band .eyebrow::before{background:var(--lime);}
+  .sub-band h2{color:var(--paper);font-size:clamp(32px,4.4vw,48px);line-height:1.02;margin:18px 0 16px;}
+  .sub-band p{color:rgba(246,244,237,.85);font-size:17px;line-height:1.6;margin:0 0 30px;}
+  .sub-form{display:flex;gap:12px;flex-wrap:wrap;}
+  .sub-form input{flex:1;min-width:220px;border:0;border-radius:100px;padding:16px 22px;font-family:var(--sans);font-size:15px;background:rgba(246,244,237,.96);color:var(--forest);}
+  .sub-form input::placeholder{color:#6b7a68;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--paper2);border-top:1px solid var(--line);padding:64px 0 36px;}
+  .fcols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;}
+  .fcols .about p{color:var(--muted);line-height:1.6;font-size:14px;max-width:34ch;margin:18px 0 0;}
+  .fcol h4{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);margin:0 0 18px;}
+  .fcol a{display:block;color:var(--muted);font-size:14px;margin-bottom:12px;}
+  .fcol a:hover{color:var(--forest);}
+  .fbot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:24px;color:var(--muted);font-size:13px;flex-wrap:wrap;gap:12px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .hero{grid-template-columns:1fr;gap:36px;padding:48px 0 64px;}
+    .hero-figure{max-width:460px;}
+    .grow .inner{grid-template-columns:1fr;gap:40px;}
+    .pgrid{grid-template-columns:repeat(2,1fr);}
+    .vgrid{grid-template-columns:1fr;}
+    .fcols{grid-template-columns:1fr 1fr;}
+  }
+  /* mobile menu */
+  .mobile-menu{display:none;}
+  @media (max-width:680px){
+    .wrap{padding:0 20px;}
+    .navlinks{display:none;}
+    .menu-btn{display:block;}
+    header.open .mobile-menu{display:flex;flex-direction:column;gap:4px;padding:8px 20px 22px;border-top:1px solid var(--line);}
+    header.open .mobile-menu a{padding:12px 4px;font-size:17px;font-weight:600;border-bottom:1px solid var(--line);}
+    header.open .mobile-menu a:last-child{border:0;margin-top:8px;text-align:center;}
+    header.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    header.open .menu-btn span:nth-child(2){opacity:0;}
+    header.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .menu-btn span{transition:transform .25s,opacity .2s;}
+    .rgrid{grid-template-columns:1fr;}
+    .pgrid{grid-template-columns:1fr 1fr;}
+    .collage{grid-template-rows:150px 150px;}
+    .sub-band{padding:56px 28px;}
+    .fcols{grid-template-columns:1fr;gap:28px;}
+    .hero-figure .badge{width:88px;height:88px;font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top" data-screen-label="Header">
+      <span class="mark"></span>
+      <span class="wm">Micro Power Greens<em>Living Greens Co.</em></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#grow">The Grow Lab</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#subscribe" class="btn btn-solid" style="padding:11px 22px;font-size:14px;">Order now</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu">
+    <a href="#menu">Menu</a>
+    <a href="#grow">The Grow Lab</a>
+    <a href="#recipes">Recipes</a>
+    <a href="#subscribe" class="btn btn-solid">Order now</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="wrap hero" data-screen-label="Hero">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">Cut fresh · ready to eat</div>
+      <h1 class="reveal">Big nutrition,<br><em>grown small.</em></h1>
+      <p class="sub reveal">Living salads and single-variety portions, hand-cut in our grow room the morning they reach you. Nutrient-dense greens, ready when you are.</p>
+      <div class="actions reveal">
+        <a href="#menu" class="btn btn-solid">See the menu</a>
+        <a href="#grow" class="btn btn-ghost"><span>See how we grow →</span></a>
+      </div>
+    </div>
+    <div class="hero-figure reveal">
+      <div class="panel">
+        <img src="salad-bowl.jpg" alt="A fresh Power Greens salad bowl">
+      </div>
+      <div class="tag"><b>Power Greens Salad · $6</b><s>Cut &amp; tossed to order</s></div>
+      <div class="badge">Picked<br>this<br>morning</div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span>Radish</span><span>Pea Shoots</span><span>Sunflower</span><span>Broccoli</span><span>Beet</span><span>Salad Mix</span><span>Amaranth</span><span>Cilantro</span>
+      <span>Radish</span><span>Pea Shoots</span><span>Sunflower</span><span>Broccoli</span><span>Beet</span><span>Salad Mix</span><span>Amaranth</span><span>Cilantro</span>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="wrap values">
+    <div class="head reveal">
+      <div class="eyebrow">Why microgreens</div>
+      <h2>Up to 40× the nutrients of mature greens, in a few delicate leaves.</h2>
+    </div>
+    <div class="vgrid">
+      <div class="vcard reveal">
+        <div class="ic">🌱</div>
+        <h3>Cut to order</h3>
+        <p>We snip your greens the day they go out — so the living crunch and peppery bite arrive intact, not wilting in a clamshell.</p>
+      </div>
+      <div class="vcard reveal">
+        <div class="ic">💡</div>
+        <h3>Grown indoors, year-round</h3>
+        <p>Our vertical grow room runs on tuned spectrum lighting and clean water — no pesticides, no weather, no off-season.</p>
+      </div>
+      <div class="vcard reveal">
+        <div class="ic">📍</div>
+        <h3>Truly local</h3>
+        <p>From our racks to your table in hours, not days. Every salad is grown, cut, and delivered within the community we live in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="wrap menu" id="menu" data-screen-label="Menu">
+    <div class="sec-head">
+      <div class="reveal">
+        <div class="eyebrow">Fresh from the grow room</div>
+        <h2>The menu</h2>
+      </div>
+      <a href="#subscribe" class="btn btn-ghost reveal"><span>How ordering works →</span></a>
+    </div>
+    <div class="mfeature">
+      <article class="mcard reveal">
+        <div class="mph"><img src="salad-bowl.jpg" alt="Power Greens salad bowl"><span class="mprice">$6</span></div>
+        <div class="mbody">
+          <h3>The Power Greens Salad</h3>
+          <p>A full bowl of our living salad mix — radish, pea, beet and brassica microgreens tossed with crisp veg and a light dressing. Ready to eat, the moment it's cut.</p>
+          <span class="add-wide" role="button">Add salad · $6</span>
+        </div>
+      </article>
+      <article class="mcard reveal">
+        <div class="mph"><img src="portion-clamshell.jpg" alt="Single portion clamshell of microgreens"><span class="mprice">$5</span></div>
+        <div class="mbody">
+          <h3>Single Portions</h3>
+          <p>A fresh-cut clamshell of one variety, living roots and all. Pick your favorite green and add it to bowls, toast, eggs or anything that needs a lift.</p>
+          <span class="add-wide" role="button">Add portion · $5</span>
+        </div>
+      </article>
+    </div>
+    <div class="varbar reveal">
+      <span class="varbar-label">Portion varieties</span>
+      <div class="chips">
+        <span>Radish · peppery</span>
+        <span>Pea shoots · sweet</span>
+        <span>Broccoli · mild</span>
+        <span>Ruby beet · earthy</span>
+        <span>Sunflower · nutty</span>
+        <span>Salad mix · balanced</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROW STORY -->
+  <section class="grow" id="grow" data-screen-label="Grow Lab">
+    <div class="wrap inner">
+      <div class="reveal">
+        <div class="eyebrow">Inside the grow room</div>
+        <h2>Part garden, part lab — all by hand.</h2>
+        <p>Each variety gets its own light spectrum, water schedule and harvest window. We test every batch under pink-and-violet grow lights tuned to push flavor and color to their peak.</p>
+        <p>No trucks, no warehouses, no week-old greens. Just trays, scissors, and greens cut the same day you get them.</p>
+        <div class="facts">
+          <div><b>7–21</b><s>days from seed to harvest</s></div>
+          <div><b>0</b><s>pesticides, ever</s></div>
+          <div><b>AM→PM</b><s>cut and delivered same day</s></div>
+        </div>
+      </div>
+      <div class="collage reveal">
+        <figure class="tall"><img src="lab-racks.jpg" alt="Racks of colorful microgreens under grow lights"></figure>
+        <figure><img src="lab-cutting.jpg" alt="Harvesting microgreens with scissors"></figure>
+        <figure><img src="grow-seedlings.jpg" alt="Young microgreen seedlings"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECIPES -->
+  <section class="wrap recipes" id="recipes" data-screen-label="Recipes">
+    <div class="sec-head">
+      <div class="reveal">
+        <div class="eyebrow">On the plate</div>
+        <h2>A little goes a long way</h2>
+      </div>
+      <a href="#" class="btn btn-ghost reveal"><span>Browse the recipe journal →</span></a>
+    </div>
+    <div class="rgrid">
+      <a class="rcard reveal" href="#">
+        <img src="meal-avotoast.jpg" alt="Avocado and microgreen toast">
+        <div class="grad"></div>
+        <div class="cap">
+          <small>5 min · No cook</small>
+          <h3>Avocado &amp; sprout toast</h3>
+          <p>Smashed avo, grilled zucchini, a crown of microgreens.</p>
+        </div>
+      </a>
+      <a class="rcard reveal" href="#">
+        <img src="meal-toasts.jpg" alt="A board of microgreen tartines">
+        <div class="grad"></div>
+        <div class="cap">
+          <small>15 min · Shareable</small>
+          <h3>Microgreen tartines</h3>
+          <p>Six ways with pea, radish &amp; sunflower shoots.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="wrap subscribe" id="subscribe" data-screen-label="Order">
+    <div class="sub-band reveal">
+      <div class="bg"><img src="field-green.jpg" alt="A tray of fresh microgreens"></div>
+      <div class="c">
+        <div class="eyebrow">Fresh greens, on repeat</div>
+        <h2>Salads &amp; portions at your door, every week.</h2>
+        <p>Choose your salads or single portions, set your schedule, and we'll cut everything fresh the morning of each delivery. Pause or swap anytime.</p>
+        <form class="sub-form" onsubmit="return false;">
+          <input type="email" placeholder="Your email address" aria-label="Email address">
+          <button class="btn btn-lime" type="submit">Start a weekly box</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div class="about">
+        <a class="brand" href="#top">
+          <span class="mark"></span>
+          <span class="wm">Micro Power Greens<em>Living Greens Co.</em></span>
+        </a>
+        <p>Hand-grown microgreens, cut to order and delivered local. Big nutrition, grown small.</p>
+      </div>
+      <div class="fcol">
+        <h4>Shop</h4>
+        <a href="#menu">The menu</a>
+        <a href="#subscribe">Weekly box</a>
+        <a href="#">Gift cards</a>
+        <a href="#">Wholesale &amp; chefs</a>
+      </div>
+      <div class="fcol">
+        <h4>Learn</h4>
+        <a href="#grow">The grow lab</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#">Nutrition</a>
+        <a href="#">Storage tips</a>
+      </div>
+      <div class="fcol">
+        <h4>Company</h4>
+        <a href="#">Our story</a>
+        <a href="#">Delivery areas</a>
+        <a href="#">Contact</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Micro Power Greens · Living Greens Co.</span>
+      <span>Grown &amp; delivered with care.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  // header shadow on scroll
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>8);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  // reveal on view
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,4)*60)+'ms';io.observe(el);});
+  // mobile menu
+  const mb=document.getElementById('menuBtn');
+  mb.addEventListener('click',()=>{const o=hdr.classList.toggle('open');mb.setAttribute('aria-expanded',o);});
+  document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{hdr.classList.remove('open');mb.setAttribute('aria-expanded','false');}));
+</script>
+</body>
+</html>
